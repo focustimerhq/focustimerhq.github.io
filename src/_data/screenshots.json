@@ -1,0 +1,69 @@
+[
+  {
+    "id": "timer",
+    "src": "1.1/timer@2.png",
+    "width": 900,
+    "height": 1300,
+    "scale": 2,
+    "caption": "Timer",
+    "alt": "Main window showing timer view",
+    "transparent": true
+  },
+  {
+    "id": "stats-daily",
+    "src": "1.1/stats-daily@2.png",
+    "width": 900,
+    "height": 1300,
+    "scale": 2,
+    "caption": "Daily stats",
+    "alt": "Daily statistics view showing focused time logged today",
+    "transparent": true
+  },
+  {
+    "id": "compact-mode",
+    "src": "1.1/compact-mode@2.png",
+    "width": 720,
+    "height": 330,
+    "scale": 2,
+    "caption": "Compact mode",
+    "alt": "Window in compact mode",
+    "transparent": true
+  },
+  {
+    "id": "indicator",
+    "src": "1.1/indicator@2.png",
+    "width": 1600,
+    "height": 1100,
+    "scale": 2,
+    "crop": {
+      "x": 1060,
+      "y": 0,
+      "width": 540,
+      "height": 800
+    },
+    "caption": "GNOME Shell indicator",
+    "alt": "Indicator in GNOME top bar",
+    "transparent": false,
+    "background": true
+  },
+  {
+    "id": "overlay",
+    "src": "1.1/screen-overlay@2.webp",
+    "width": 2400,
+    "height": 1350,
+    "scale": 2,
+    "caption": "Break overlay",
+    "alt": "Full-screen break overlay reminding you to take a break",
+    "transparent": false
+  },
+  {
+    "id": "preferences",
+    "src": "1.1/preferences@2.png",
+    "width": 2162,
+    "height": 1620,
+    "scale": 2,
+    "caption": "Preferences",
+    "alt": "Focus Timer preferences window",
+    "transparent": true
+  }
+]

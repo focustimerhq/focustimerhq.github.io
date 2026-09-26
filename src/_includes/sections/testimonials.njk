@@ -1,0 +1,15 @@
+<section id="testimonials" class="section" aria-labelledby="testimonials-heading">
+  <h2 id="testimonials-heading" class="section-title">Testimonials</h2>
+  <div class="container">
+    <div class="testimonials-grid">
+      {% for item in testimonials.items %}
+        <blockquote class="js-reveal">
+          <span class="quote-marks" aria-hidden="true"></span>
+          <p>{{ item.quote }}{% if item.legacy %}<span class="asterisk">&nbsp;*</span>{% endif %}</p>
+          <footer class="muted small">{{ item.author }}</footer>
+        </blockquote>
+      {% endfor %}
+    </div>
+    <p class="muted small"><span class="asterisk">*&nbsp;</span>{{ testimonials.footnote }}</p>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+permalink: /
+---
+{% extends "base.njk" %}
+
+{% block content %}
+  {% include "sections/hero.njk" %}
+  {% include "sections/about.njk" %}
+  <div class="accent-block">
+    {% include "sections/features.njk" %}
+    {% include "sections/screenshots.njk" %}
+  </div>
+  {% include "sections/testimonials.njk" %}
+  {% include "sections/download.njk" %}
+  {% include "sections/faq.njk" %}
+  {% include "sections/contribute.njk" %}
+{% endblock %}

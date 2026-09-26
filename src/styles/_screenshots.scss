@@ -1,0 +1,418 @@
+@use "variables" as *;
+
+#screenshots {
+  --section-bg: var(--section-accent-bg);
+  --carousel-curtain: var(--section-bg);
+  --screenshot-bg: #bad5c1;
+  --lightbox-backdrop-bg: rgba(0, 0, 0, 0.72);
+
+  padding: 0;
+
+  .container {
+    padding: 0;
+    overflow: visible;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .carousel {
+    --carousel-curtain-width: 60px;
+
+    position: relative;
+    isolation: isolate;
+    margin-inline: -24px;
+  }
+
+  .carousel::before,
+  .carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--carousel-curtain-width);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s ease;
+  }
+
+  .carousel::before {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--carousel-curtain) 0%,
+      transparent 100%
+    );
+  }
+
+  .carousel::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      var(--carousel-curtain) 0%,
+      transparent 100%
+    );
+  }
+
+  .carousel[data-more-start]::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .carousel[data-more-end]::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .carousel-inner {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: none;
+    scroll-padding-inline: 0 var(--space-5);
+    padding-block: 48px 64px;
+    padding-inline: 0 var(--space-5);
+    scrollbar-width: none;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .carousel-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-inner.is-dragging {
+    cursor: grabbing;
+  }
+
+  .carousel-inner.is-dragging .screenshot {
+    pointer-events: none;
+  }
+
+  .carousel-sentinel {
+    flex: none;
+    width: 1px;
+    height: 1px;
+    scroll-snap-align: none;
+  }
+
+  .screenshot {
+    flex: none;
+    contain: layout;
+
+    &.is-thumb-hidden .screenshot-btn {
+      visibility: hidden;
+    }
+
+    /*
+    &:hover:not(.is-thumb-hidden) {
+      transform: scale(1.025);
+    }
+    */
+  }
+
+  .screenshot-btn {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+  }
+
+  .screenshot-btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    // border-radius: var(--radius-sm);
+  }
+
+  .screenshot-btn img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 480px;
+    max-width: min(480px, calc(100vw - 48px));
+    object-fit: scale-down;
+  }
+
+  .screenshot:not(.transparent):not(.cropped) img,
+  .lightbox-img {
+    border-radius: 10px;
+    // box-shadow: var(--dropdown-box-shadow);
+  }
+
+  .screenshot.cropped .screenshot-crop {
+    position: relative;
+    overflow: hidden;
+    max-height: 480px;
+  }
+
+  .screenshot.cropped:not(.transparent) .screenshot-crop {
+    border-radius: 10px;
+  }
+
+  .screenshot.cropped .screenshot-crop img {
+    position: absolute;
+    max-width: none;
+    max-height: none;
+    object-fit: fill;
+    object-position: 0 0;
+  }
+}
+
+.lightbox {
+  --button-bg: transparent;
+  --button-bg-hover: rgba(110, 110, 110, 0.5);
+  --button-bg-active: rgba(130, 130, 130, 0.5);
+  --button-fg: #ffffff;
+  --lightbox-inset: 20px;
+
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.lightbox::backdrop {
+  background: var(--lightbox-backdrop-bg);
+  backdrop-filter: blur(8px);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.is-closing::backdrop {
+  opacity: 0;
+}
+
+.lightbox.is-opening .lightbox-panel {
+  opacity: 0;
+}
+
+.lightbox.is-zooming {
+  overflow: visible;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+}
+
+.lightbox.is-zooming .lightbox-panel {
+  overflow: visible;
+}
+
+.lightbox.is-zooming .lightbox-stage {
+  overflow: visible;
+  max-height: none;
+}
+
+.lightbox.is-zooming .lightbox-slide.is-active .lightbox-img {
+  will-change: transform;
+}
+
+#screenshots .lightbox.is-zooming .lightbox-img.is-crop-zoom {
+  will-change: transform, clip-path;
+}
+
+.lightbox.is-opening .lightbox-close,
+.lightbox.is-opening .lightbox-previous,
+.lightbox.is-opening .lightbox-next,
+.lightbox.is-closing .lightbox-close,
+.lightbox.is-closing .lightbox-previous,
+.lightbox.is-closing .lightbox-next,
+.lightbox.is-zooming .lightbox-caption,
+.lightbox.is-zooming .lightbox-close,
+.lightbox.is-zooming .lightbox-previous,
+.lightbox.is-zooming .lightbox-next {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@starting-style {
+  .lightbox[open]::backdrop,
+  .lightbox[open] .lightbox-close,
+  .lightbox[open] .lightbox-previous,
+  .lightbox[open] .lightbox-next {
+    opacity: 0;
+  }
+}
+
+.lightbox-panel {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  width: min(100% - var(--space-5), $breakpoint-lg);
+  height: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+  padding-block: var(--space-8) var(--space-6);
+  margin-inline: auto;
+  touch-action: pan-y;
+}
+
+.lightbox-slides {
+  position: relative;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.lightbox-slide {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.lightbox-slide:not(.is-active) {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.lightbox-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-height: min(80vh, 960px);
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(calc(100vw - var(--space-5) * 2), 100%);
+  max-height: min(80vh, 960px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform-origin: top left;
+  touch-action: pan-y;
+  -webkit-user-drag: none;
+}
+
+.lightbox-img.background,
+.screenshot-crop > img.background,
+.screenshot-btn > img.background {
+  background-color: var(--screenshot-bg);
+}
+
+.lightbox-caption {
+  margin: var(--space-4) 0 0;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.lightbox-close,
+.lightbox-previous,
+.lightbox-next {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+.lightbox-close,
+.lightbox-previous,
+.lightbox-next {
+    top: var(--lightbox-inset);
+}
+
+.lightbox-close {
+  right: var(--lightbox-inset);
+}
+
+.lightbox-previous {
+  left: var(--lightbox-inset);
+}
+
+.lightbox-next {
+  left: calc(var(--lightbox-inset) + 70px);
+  right: auto;
+}
+
+
+@media (min-width: $breakpoint-md) {
+  .lightbox {
+    --lightbox-inset: 40px;
+    --button-bg: rgba(90, 90, 90, 0.5);
+  }
+
+  .lightbox-previous,
+  .lightbox-next {
+    top: 42%;
+  }
+
+  .lightbox-previous {
+    left: var(--lightbox-inset);
+  }
+
+  .lightbox-next {
+    left: auto;
+    right: var(--lightbox-inset);
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .carousel {
+    margin-inline: -40px;
+  }
+}
+
+html:has(.lightbox[open]) {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #screenshots {
+    .carousel::before,
+    .carousel::after {
+      transition: none;
+    }
+  }
+
+  .lightbox::backdrop,
+  .lightbox.is-zooming .lightbox-caption,
+  .lightbox-close,
+  .lightbox-previous,
+  .lightbox-next {
+    transition: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #screenshots {
+    --screenshot-bg: #5c5c5c;
+    --lightbox-backdrop-bg: rgba(60, 60, 60, 0.72);
+  }
+
+  @media (min-width: $breakpoint-md) {
+    .lightbox {
+      --button-bg: rgba(255, 255, 255, 0.1);
+      --button-bg-hover: rgba(255, 255, 255, 0.2);
+      --button-bg-active: rgba(255, 255, 255, 0.25);
+    }
+  }  
+}

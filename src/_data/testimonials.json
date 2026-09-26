@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "quote": "Helps me know if im wasting time",
+      "author": "MKLitTech",
+      "legacy": false
+    },
+    {
+      "quote": "I have hard ADHD and this app helped me so much",
+      "author": "Marouane",
+      "legacy": false
+    },
+    {
+      "quote": "Simple, but has everything I could need",
+      "author": "David",
+      "legacy": false
+    },
+    {
+      "quote": "I use paid ios/mac applications but to be honest this one is my favourite",
+      "author": "zenek73",
+      "legacy": true
+    },
+    {
+      "quote": "The tray icon makes it get out of the way",
+      "author": "egirl",
+      "legacy": true
+    },
+    {
+      "quote": "An awesome extension with no nonsense. It's just straightforward and simple that's why I love it so much!",
+      "author": "Kageyama Tobio",
+      "legacy": true
+    }
+  ],
+  "footnote": "reviews refer to the older version, while the app was named GNOME Pomodoro"
+}

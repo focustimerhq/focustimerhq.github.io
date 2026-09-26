@@ -1,0 +1,88 @@
+@use "variables" as *;
+
+#features {
+  padding-bottom: 0;
+  padding-block-end: 0;
+}
+
+.features-group {
+  break-inside: avoid;
+  margin-bottom: var(--space-7);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  & > h3 {
+    font-family: inherit;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+
+    .icon {
+      vertical-align: -1px;
+      margin-right: 0.25em;
+    }
+  }
+
+  & > dl {
+    margin: 0;
+    padding: 0;
+  }
+
+  & > dl > dd:last-child {
+    margin-bottom: 0;
+  }
+
+  & > dl > dt {
+    font-weight: 700;
+    margin: 0;
+  }
+
+  & > dl > dd {
+    color: color-mix(in srgb, currentColor 70%, transparent);
+    margin: 0 0 16px 0;
+  }
+}
+
+.accent-block {
+  --section-bg: var(--section-accent-bg);
+  --color-text-primary: var(--section-accent-text);
+  --color-text-secondary: var(--section-accent-text);
+  background: var(--section-accent-bg);
+  color: var(--section-accent-text);
+}
+
+.accent-block .section {
+  --section-bg: transparent;
+  background: transparent;
+}
+
+.accent-block .section + .section {
+  padding-top: 0;
+}
+
+
+@media (min-width: $breakpoint-md) {
+  .features-grid {
+    columns: 2;
+    column-gap: var(--space-5);
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .features-grid {
+    columns: 2;
+    column-gap: var(--space-8);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #features {
+    dt,
+    dd,
+    a {
+      color: #c3e1c8;
+    }
+  }
+}

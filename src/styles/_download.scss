@@ -1,0 +1,141 @@
+@use "variables" as *;
+
+#download {
+  --section-bg: #f8f9f8;
+  --primary-gradient-1: #c6f4d0;
+  --primary-gradient-2: #b0f0bc;
+  --primary-gradient-1-hover: #c7ffd3;
+  --primary-gradient-2-hover: #abffb9;
+
+  .download-grid {
+    display: grid;
+  }
+  
+  .download-grid > .column {
+    min-width: 0;
+  }
+  
+  .download-grid > .column:nth-child(1) {
+     text-align: center;
+  
+     p {
+      max-width: 25ch;
+      margin-inline: auto;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+  }
+
+  .download-flatpak {
+    margin-bottom: 24px;
+  }
+
+  .primary {
+    position: relative;
+    margin-bottom: 32px;
+    background: linear-gradient(135deg, var(--primary-gradient-1), var(--primary-gradient-2));
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--primary-gradient-1-hover), var(--primary-gradient-2-hover));
+      opacity: 0;
+      transition: opacity 150ms ease;
+      pointer-events: none;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 1;
+    }
+
+    & > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  h3 {
+    margin-block: 32px 12px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin-bottom: 12px;
+
+    &:not(.muted) a {
+      font-weight: 500;
+    }
+  }
+
+  ol {
+    padding-inline-start: 20px;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  #download {
+    .download-grid {
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .download-grid > .column:nth-child(2) {
+      display: grid;
+      grid-template-columns: 1fr;
+      /* extend hitbox for the hover effect */
+      padding: 50px 100px;
+      margin: -50px -100px;
+    }
+
+    .download-repos,
+    .download-flatpak {
+      grid-area: 1 / 1;
+      align-self: start;
+      transition: opacity 350ms ease;
+      margin-bottom: 0;
+    }
+
+    .download-repos {
+      opacity: 1;
+    }
+
+    .download-flatpak {
+      opacity: 0;
+      pointer-events: none;
+      padding-bottom: 24px;
+    }
+
+    .download-grid.is-alt .download-repos {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .download-grid.is-alt .download-flatpak {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    ol {
+      padding-inline-start: 40px;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    #download {
+      --section-bg: #343434;
+      --primary-gradient-1: #a7f4b8;
+      --primary-gradient-2: #7ed88f;
+      --primary-gradient-1-hover: #c7ffd3;
+      --primary-gradient-2-hover: #abffb9;
+    }
+  }
+}

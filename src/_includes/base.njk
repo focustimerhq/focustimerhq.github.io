@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title %}
+      <title>{{ title }}</title>
+      <meta name="description" content="{{ description }}">
+    {% else %}
+      <title>{{ site.title }}</title>
+      <meta name="description" content="{{ site.description }}">
+      <meta name="keywords" content="{{ site.keywords }}">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="{{ site.url }}">
+      <meta property="og:title" content="{{ site.title }}">
+      <meta property="og:image" content="{{ site.image }}">
+    {% endif %}
+    <link rel="icon" href="{{ site.icon }}" type="image/svg+xml">
+    <link rel="preload" href="/assets/fonts/asap-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body>
+    {% block header %}{% endblock %}
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+    {% block footer %}
+      <footer>
+        <div class="container">
+          <p class="muted tiny">
+            This project is not affiliated with, authorized by, sponsored by, or otherwise approved by GNOME Foundation and/or the Pomodoro Technique®. The GNOME logo and GNOME name are registered trademarks or trademarks of GNOME Foundation in the United States or other countries. The Pomodoro Technique® and Pomodoro™ are registered trademarks of Francesco Cirillo.
+          </p>
+          <p class="muted tiny">Made with ♥ by <a href="{{ site.links.author }}" ref="noreferrer">Kamil Prusko</a></p>
+        </div>
+      </footer>
+    {% endblock %}
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>

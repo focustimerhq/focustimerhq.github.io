@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+#testimonials {
+  .testimonials-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin-bottom: 12px; 
+  }
+  
+  blockquote {
+    text-align: center;
+    margin: 0;
+
+    p {
+      margin: var(--space-2) 0 var(--space-3);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+
+  p.muted {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: var(--fs-small);
+    margin-top: 48px;
+  }
+
+  .quote-marks {
+    display: inline-block;
+    width: 48px;
+    height: 16px;
+    opacity: 0.2;
+    background-color: currentColor;
+    mask: url("/assets/icons/quote-marks-symbolic.svg") no-repeat center / 100%;
+  }
+
+  .asterisk {
+    color: var(--color-text-secondary);
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  #testimonials {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    blockquote {
+      text-align: center;
+      margin: 0;
+
+      p {
+        font-size: 1.0rem;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  #testimonials .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7) var(--space-5);
+  }
+}

@@ -1,0 +1,32 @@
+@use "variables" as *;
+
+#contribute {
+  text-align: center;
+  padding-bottom: 0px;
+  overflow: visible;
+
+  .contribute-actions {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    gap: 16px 24px;
+    margin-bottom: 64px;
+    text-align: initial;
+
+    & > a[role="button"],
+    & > .dropdown > summary {
+      width: 100%;
+      box-sizing: border-box;
+      text-wrap: nowrap;
+    }
+  }
+
+  p {
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: $breakpoint-sm) {
+  #contribute .contribute-actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

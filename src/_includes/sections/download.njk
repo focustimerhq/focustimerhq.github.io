@@ -1,0 +1,40 @@
+<section id="download" class="section" aria-labelledby="download-heading">
+  <h2 id="download-heading" class="section-title">Download</h2>
+  <div class="container">
+    <div class="download-grid">
+      <div class="column">
+        <a role="button" class="primary large" href="{{ site.links.flathub }}" ref="noreferrer">
+          <span class="icon icon-flathub-symbolic" aria-hidden="true"></span>
+          <span>Get it on Flathub</span>
+        </a>
+        <p>Recommended method,<br/>to always get the latest release</p>
+      </div>
+      <div class="column">
+        <div class="download-flatpak">
+          <h3>Flatpak</h3>
+          <pre><code>flatpak install --user flathub io.github.focustimerhq.FocusTimer</code></pre>
+
+          <h3>Switching from gnome-pomodoro?</h3>
+          <p>To keep your stats data, follow these steps:</p>
+          <ol>
+            <li>Quit the app</li>
+            <li>Copy <code>~/.local/share/gnome-pomodoro/database.sqlite</code> to <code>~/.var/app/io.github.focustimerhq.FocusTimer/data/focus-timer/database.sqlite</code></li>
+            <li>Open the new app and check the Stats — your data should get migrated</li>
+          </ol>
+        </div>
+        <div class="download-repos">
+          <p>If you prefer, find a community-maintained package in your distro repos:</p>
+
+          <h3>Fedora</h3>
+          <pre><code>sudo dnf install focus-timer gnome-shell-extension-focus-timer</code></pre>
+          <p class="muted">Thanks to <a href="https://github.com/ankursinha" target="_blank" rel="noopener noreferrer">Ankur Sinha</a> for maintaining the packages.</p>
+
+          <h3>Arch</h3>
+          <p>Install gnome-shell-pomodoro from the <a href="https://aur.archlinux.org/packages/gnome-shell-pomodoro" target="_blank" rel="noopener noreferrer">AUR</a>.</p>
+          <p class="muted">Thanks to <a href="https://github.com/liamtimms" target="_blank" rel="noopener noreferrer">Liam Timms</a> for maintaining the package.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="module" src="/scripts/download.js"></script>

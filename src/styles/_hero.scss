@@ -1,0 +1,118 @@
+@use "variables" as *;
+
+#hero {
+  --color-text-primary: #ffffff;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: min(92vh, 820px);
+  overflow: clip;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:
+    url("/assets/images/hero.webp"),
+    url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAAMElEQVR4nGN0d3W9e/uasIjQ02dvWH7+/i0pJc3GwSj2S4iRlZVVT0udlZXlxavXADISDh1jGK89AAAAAElFTkSuQmCC");
+  color: var(--color-text-primary);
+
+  .container {
+    z-index: 1;
+    position: relative;
+  }
+
+  .hero-contents {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin-inline: auto;
+    padding: 12px;
+    text-align: center;
+    will-change: transform;
+
+    & > h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: inherit;
+      margin: 20px 0;
+    }
+
+    & > p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin: 0 0 36px 0;
+      letter-spacing: 0.03em;
+    }
+
+    & > .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 16px;
+      column-gap: 24px;
+    }
+  }
+}
+
+/*
+ * Parallax effect
+ */
+ @supports (animation-timeline: view()) {
+  #hero {
+    view-timeline-name: --hero-view;
+    view-timeline-axis: block;
+  }
+
+  .hero-contents {
+    animation: pull-away linear both;
+    animation-timeline: --hero-view;
+    animation-range: exit;
+  }
+}
+
+@keyframes pull-away {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(round(-7vh, 1px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero-contents {
+    transform: none !important;
+  }
+}
+
+/*
+ * Responsive styles
+ */
+@media (max-aspect-ratio: 1/1) {
+  #hero .hero-contents {
+    & > h1 {
+      margin-bottom: 30px;
+    }
+
+    & > p {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  #hero .hero-contents > h1 {
+    font-size: 3.5rem;
+  }
+
+  #hero .hero-contents > p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  #hero .hero-contents > h1 {
+    font-size: 4rem;
+  }
+}

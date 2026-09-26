@@ -1,0 +1,127 @@
+@use "sass:meta";
+@use "sass:string";
+
+$icon-close: '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+  '  <path d="m 3.019531 2 c -0.265625 0 -0.519531 0.105469 -0.707031 0.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 l 4.292969 4.292969 l -4.292969 4.292969 c -0.390625 0.390625 -0.390625 1.023437 0 1.414062 s 1.023438 0.390625 1.414062 0 l 4.292969 -4.292969 l 4.292969 4.292969 c 0.390625 0.390625 1.023438 0.390625 1.414062 0 c 0.390626 -0.390625 0.390626 -1.023437 0 -1.414062 l -4.292968 -4.292969 l 4.292968 -4.292969 c 0.390626 -0.390625 0.390626 -1.023437 0 -1.414062 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 s -0.519531 0.105469 -0.707031 0.292969 l -4.292969 4.292969 l -4.292969 -4.292969 c -0.1875 -0.1875 -0.441406 -0.292969 -0.707031 -0.292969 z m 0 0" fill="currentColor"/>' +
+  "</svg>";
+
+$icon-next: '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+  ' <path d="m4 2c0-0.26562 0.10547-0.51953 0.29297-0.70703 0.39062-0.39062 1.0234-0.39062 1.4141 0l6 6c0.1875 0.1875 0.29297 0.44141 0.29297 0.70703s-0.10547 0.51953-0.29297 0.70703l-6 6c-0.39062 0.39062-1.0234 0.39062-1.4141 0-0.1875-0.1875-0.29297-0.44141-0.29297-0.70703s0.10547-0.51953 0.29297-0.70703l5.293-5.293-5.293-5.293c-0.1875-0.1875-0.29297-0.44141-0.29297-0.70703z" fill="currentColor"/>' +
+  "</svg>";
+
+$icon-previous: '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+  '  <path d="m12 2c0-0.26562-0.10547-0.51953-0.29297-0.70703-0.39062-0.39062-1.0234-0.39062-1.4141 0l-6 6c-0.1875 0.1875-0.29297 0.44141-0.29297 0.70703s0.10547 0.51953 0.29297 0.70703l6 6c0.39062 0.39062 1.0234 0.39062 1.4141 0 0.1875-0.1875 0.29297-0.44141 0.29297-0.70703s-0.10547-0.51953-0.29297-0.70703l-5.293-5.293 5.293-5.293c0.1875-0.1875 0.29297-0.44141 0.29297-0.70703z" fill="currentColor"/>' +
+  "</svg>";
+
+$icon-copy: '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+  '  <path d="m 0 3 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 c 0 0.550781 -0.449219 1 -1 1 s -1 -0.449219 -1 -1 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 v 5 c 0 0.570312 0.429688 1 1 1 c 0.550781 0 1 0.449219 1 1 s -0.449219 1 -1 1 c -1.644531 0 -3 -1.355469 -3 -3 z m 5 5 c 0 -1.644531 1.355469 -3 3 -3 h 5 c 1.644531 0 3 1.355469 3 3 v 5 c 0 1.644531 -1.355469 3 -3 3 h -5 c -1.644531 0 -3 -1.355469 -3 -3 z m 2 0 v 5 c 0 0.570312 0.429688 1 1 1 h 5 c 0.570312 0 1 -0.429688 1 -1 v -5 c 0 -0.570312 -0.429688 -1 -1 -1 h -5 c -0.570312 0 -1 0.429688 -1 1 z m 0 0" fill="currentColor"/>' +
+  "</svg>";
+
+$icon-down: '<?xml version="1.0" encoding="UTF-8"?>' +
+  '<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg">' +
+  '  <path d="m 2.292969 6.707031 l 5 5 c 0.390625 0.390625 1.023437 0.390625 1.414062 0 l 5 -5 c 0.390625 -0.390625 0.390625 -1.023437 0 -1.414062 s -1.023437 -0.390625 -1.414062 0 l -4.292969 4.292969 l -4.292969 -4.292969 c -0.390625 -0.390625 -1.023437 -0.390625 -1.414062 0 s -0.390625 1.023437 0 1.414062 z" fill="currentColor"/>' +
+  "</svg>";
+
+$icon-assets-path: "/assets/icons";
+
+@mixin icon-mask-asset($filename) {
+  background-color: currentColor;
+  mask: url("#{$icon-assets-path}/#{$filename}") no-repeat center / 100%;
+}
+
+@function _replace-all($string, $search, $replace) {
+$result: "";
+$index: string.index($string, $search);
+
+@while $index {
+    $result: $result + string.slice($string, 1, $index - 1) + $replace;
+    $string: string.slice($string, $index + string.length($search));
+    $index: string.index($string, $search);
+}
+
+@return $result + $string;
+}
+
+@function svg-url($svg) {
+@if meta.type-of($svg) == "string" {
+    $svg: string.unquote($svg);
+}
+
+// "%" must stay first. Replacements contain "%", so the search has to continue
+// after each match — otherwise "%25" is matched again and compilation hangs.
+$map: (
+    "%": "%25",
+    "<": "%3C",
+    ">": "%3E",
+    " ": "%20",
+    '"': "%22",
+    "'": "%27",
+    "&": "%26",
+    "#": "%23",
+    "{": "%7B",
+    "}": "%7D",
+);
+
+@each $char, $replacement in $map {
+    $svg: _replace-all($svg, $char, $replacement);
+}
+
+@return url("data:image/svg+xml;charset=utf-8,#{$svg}");
+}
+
+.icon-close {
+  background-color: currentColor;
+  mask: svg-url($icon-close) no-repeat center / 100%;
+}
+
+.icon-next {
+  background-color: currentColor;
+  mask: svg-url($icon-next) no-repeat center / 100%;
+}
+
+.icon-previous {
+  background-color: currentColor;
+  mask: svg-url($icon-previous) no-repeat center / 100%;
+}
+
+.icon-copy {
+  background-color: currentColor;
+  mask: svg-url($icon-copy) no-repeat center / 100%;
+}
+
+.icon-down {
+  background-color: currentColor;
+  mask: svg-url($icon-down) no-repeat center / 100%;
+}
+
+.icon-flathub-symbolic {
+  @include icon-mask-asset("flathub-symbolic.svg");
+}
+
+.icon-github-alt-symbolic {
+  @include icon-mask-asset("github-alt-symbolic.svg");
+}
+
+.icon-timer-symbolic {
+  @include icon-mask-asset("timer-symbolic.svg");
+}
+
+.icon-notification-symbolic {
+  @include icon-mask-asset("notification-symbolic.svg");
+}
+
+.icon-stats-symbolic {
+  @include icon-mask-asset("stats-symbolic.svg");
+}
+
+.icon-plugin-symbolic {
+  @include icon-mask-asset("plugin-symbolic.svg");
+}
+
+.icon-custom-action-symbolic {
+  @include icon-mask-asset("custom-action-symbolic.svg");
+}

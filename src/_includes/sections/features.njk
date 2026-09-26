@@ -1,0 +1,21 @@
+<section id="features" class="section" aria-labelledby="features-heading">
+  <h2 id="features-heading" class="section-title">Features</h2>
+  <div class="container">
+    <div class="features-grid">
+      {% for group in features %}
+        <div class="features-group">
+          <h3>
+            <span class="icon icon-{{ group.icon | replace('.svg', '') }}" aria-hidden="true"></span>
+            {{ group.title }}
+          </h3>
+          <dl>
+            {% for item in group.items %}
+              <dt>{{ item.title }}</dt>
+              <dd>{{ item.description | safe }}</dd>
+            {% endfor %}
+          </dl>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

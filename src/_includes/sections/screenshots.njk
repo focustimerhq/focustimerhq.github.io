@@ -1,0 +1,123 @@
+<section id="screenshots" class="section" aria-label="Screenshots">
+  <style>
+    {% for screenshot in screenshots %}
+      {% set scale = screenshot.scale or 1 %}
+      {% set logicalW = (screenshot.width / scale) | round %}
+      {% set logicalH = (screenshot.height / scale) | round %}
+      {% if screenshot.crop %}
+        {% set crop = screenshot.crop %}
+        {% set shotW = screenshot.width %}
+        {% set shotH = screenshot.height %}
+        {% set cw = crop.width %}
+        {% set ch = crop.height %}
+        {% set cx = crop.x %}
+        {% set cy = crop.y %}
+        {% set displayW = (cw / scale) | round %}
+        {% set displayH = (ch / scale) | round %}
+        #screenshots [data-id="{{ screenshot.id }}"] .screenshot-crop {
+          width: min({{ displayW }}px, 480px, calc(100vw - 48px));
+          aspect-ratio: {{ cw }} / {{ ch }};
+          max-height: min(480px, {{ displayH }}px);
+        }
+        #screenshots [data-id="{{ screenshot.id }}"] .screenshot-crop img {
+          width: {{ (shotW / cw * 100) }}%;
+          height: {{ (shotH / ch * 100) }}%;
+          left: {{ (-cx / cw * 100) }}%;
+          top: {{ (-cy / ch * 100) }}%;
+        }
+      {% else %}
+        #screenshots [data-id="{{ screenshot.id }}"] .screenshot-btn > img {
+          max-width: min({{ logicalW }}px, 480px, calc(100vw - 48px));
+          max-height: min({{ logicalH }}px, 480px);
+        }
+      {% endif %}
+    {% endfor %}
+  </style>
+  <div class="container">
+    <div class="carousel js-reveal">
+      <div class="carousel-inner">
+        <span class="carousel-sentinel carousel-sentinel-start" aria-hidden="true"></span>
+        {% for screenshot in screenshots %}
+          {% set scale = screenshot.scale or 1 %}
+          {% set logicalW = (screenshot.width / scale) | round %}
+          {% set logicalH = (screenshot.height / scale) | round %}
+          <figure
+            class="screenshot{{ ' cropped' if screenshot.crop else '' }}{{ ' transparent' if screenshot.transparent else '' }}"
+            data-id="{{ screenshot.id }}"
+            data-caption="{{ screenshot.caption }}"
+            data-alt="{{ screenshot.alt }}"
+            data-index="{{ loop.index0 }}"
+            {% if screenshot.crop %}
+              data-crop="{{ screenshot.crop.x }} {{ screenshot.crop.y }} {{ screenshot.crop.width }} {{ screenshot.crop.height }}"
+            {% endif %}
+            {% if screenshot.background %}
+              data-background="true"
+            {% endif %}
+          >
+            <button type="button" class="screenshot-btn" aria-label="View {{ screenshot.caption }}">
+              {% if screenshot.crop %}
+                <div class="screenshot-crop">
+                  <img
+                    src="/assets/screenshots/{{ screenshot.src }}"
+                    alt=""
+                    width="{{ logicalW }}"
+                    height="{{ logicalH }}"
+                    draggable="false"
+                    loading="lazy"
+                    {% if screenshot.background %}class="background"{% endif %}
+                    {% if scale > 1 %}
+                      srcset="/assets/screenshots/{{ screenshot.src }} {{ scale }}x"
+                    {% endif %}
+                  >
+                </div>
+              {% else %}
+                <img
+                  src="/assets/screenshots/{{ screenshot.src }}"
+                  alt=""
+                  width="{{ logicalW }}"
+                  height="{{ logicalH }}"
+                  draggable="false"
+                  loading="lazy"
+                  {% if screenshot.background %}class="background"{% endif %}
+                  {% if scale > 1 %}
+                    srcset="/assets/screenshots/{{ screenshot.src }} {{ scale }}x"
+                  {% endif %}
+                >
+              {% endif %}
+            </button>
+          </figure>
+        {% endfor %}
+        <span class="carousel-sentinel carousel-sentinel-end" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="lightbox" aria-label="Screenshot gallery">
+    <div class="lightbox-panel">
+      <button type="button" class="icon-button large lightbox-close" aria-label="Close gallery">
+        <span class="icon icon-close" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="icon-button large lightbox-previous" aria-label="Previous screenshot">
+        <span class="icon icon-previous" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="icon-button large lightbox-next" aria-label="Next screenshot">
+        <span class="icon icon-next" aria-hidden="true"></span>
+      </button>
+      <div class="lightbox-slides">
+        <div class="lightbox-slide is-active">
+          <div class="lightbox-stage">
+            <img class="lightbox-img" alt="" draggable="false">
+          </div>
+          <p class="lightbox-caption"></p>
+        </div>
+        <div class="lightbox-slide" aria-hidden="true">
+          <div class="lightbox-stage">
+            <img class="lightbox-img" alt="" draggable="false">
+          </div>
+          <p class="lightbox-caption"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</section>
+<script type="module" src="/scripts/screenshots.js"></script>

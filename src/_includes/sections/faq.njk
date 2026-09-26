@@ -1,0 +1,13 @@
+<section class="faq section" id="faq" aria-labelledby="faq-heading">
+  <h2 id="faq-heading" class="section-title">FAQ</h2>
+  <div class="container container-narrow">
+    {% for item in collections.faq %}
+      <details class="expander faq-item" id="{{ item.fileSlug }}">
+        <summary>{{ item.data.question }}</summary>
+        <div class="faq-answer">
+          {{ item.templateContent | safe }}
+        </div>
+      </details>
+    {% endfor %}
+  </div>
+</section>

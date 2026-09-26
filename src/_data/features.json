@@ -1,0 +1,101 @@
+[
+  {
+    "id": "timer",
+    "title": "Timer",
+    "icon": "timer-symbolic.svg",
+    "items": [
+      {
+        "title": "Custom session lengths",
+        "description": "Set your own focus, short-break, and long-break durations"
+      },
+      {
+        "title": "Full session control",
+        "description": "Pause, Rewind, Extend, Skip early — the timer adjusts to your day"
+      },
+      {
+        "title": "Auto-progression by default",
+        "description": "Resume session automatically after coming from break"
+      },
+      {
+        "title": "Compact mode",
+        "description": "A small countdown window, for anyone who doesn't use the tray icon"
+      }
+    ]
+  },
+  {
+    "id": "notifications",
+    "title": "Notifications",
+    "icon": "notification-symbolic.svg",
+    "items": [
+      {
+        "title": "Screen overlay on breaks",
+        "description": "A full-screen reminder to help you actually take your break"
+      },
+      {
+        "title": "Notifications & sounds",
+        "description": "Know when a session starts or ends without watching the timer"
+      },
+      {
+        "title": "Announcements",
+        "description": "Extra notification to wrap up work before a break"
+      }
+    ]
+  },
+  {
+    "id": "insight",
+    "title": "Insight",
+    "icon": "stats-symbolic.svg",
+    "items": [
+      {
+        "title": "Daily, weekly, monthly stats",
+        "description": "See how much focused work you actually logged"
+      },
+      {
+        "title": "Local, automatic backups",
+        "description": "Your history is stored in a local database, backed up daily"
+      }
+    ]
+  },
+  {
+    "id": "desktop-integration",
+    "title": "Desktop Integration",
+    "icon": "plugin-symbolic.svg",
+    "items": [
+      {
+        "title": "System tray icon",
+        "description": "Timer status and quick actions, always one click away"
+      },
+      {
+        "title": "Global shortcuts",
+        "description": "Control the timer from anywhere on your desktop, without switching to the app first"
+      },
+      {
+        "title": "Idle & lock-screen aware",
+        "description": "Detects when you've stepped away or locked your screen and adjusts the timer accordingly"
+      },
+      {
+        "title": "GNOME Shell extension",
+        "description": "An <a href=\"https://github.com/focustimerhq/gnome-shell-extension-focus-timer\">optional companion</a> for tighter GNOME Shell integration"
+      }
+    ]
+  },
+  {
+    "id": "automation",
+    "title": "Automation",
+    "icon": "custom-action-symbolic.svg",
+    "items": [
+      {
+        "title": "Auto-pause your media",
+        "description": "Extra cue to step away. Resumes playback on next Pomodoro"
+      },
+      {
+        "title": "Custom actions",
+        "description": "Customize app further by running shell commands on timer events"
+      },
+      {
+        "title": "D-Bus & CLI",
+        "description": "Connect the timer to your own scripts or tools"
+      }
+    ]
+  }
+]

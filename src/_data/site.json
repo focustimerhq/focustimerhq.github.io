@@ -1,0 +1,23 @@
+{
+  "url": "https://focustimerhq.github.io",
+  "title": "Focus Timer",
+  "description": "Work better with regular breaks",
+  "keywords": "gnome, gnome-shell, pomodoro, pomodoro timer, break timer, extension, linux",
+  "icon": "/assets/icons/io.github.focustimerhq.FocusTimer-symbolic.svg",
+  "image": "/assets/icons/io.github.focustimerhq.FocusTimer.svg",
+  "links": {
+    "flathub": "https://flathub.org/apps/io.github.focustimerhq.FocusTimer",
+    "github": "https://github.com/focustimerhq/FocusTimer",
+    "extension": "https://github.com/focustimerhq/gnome-shell-extension-focus-timer",
+    "issues": "https://github.com/focustimerhq/FocusTimer/issues",
+    "translate": "https://github.com/focustimerhq/FocusTimer/blob/main/CONTRIBUTING.md#translating",
+    "license": "https://github.com/focustimerhq/FocusTimer/blob/main/COPYING",
+    "author": "https://github.com/kamilprusko",
+    "donate": {
+      "github": "https://github.com/sponsors/kamilprusko",
+      "kofi": "https://ko-fi.com/kamilprusko",
+      "liberapay": "https://liberapay.com/kamilprusko",
+      "paypal": "https://www.paypal.me/kamilprusko"
+    }
+  }
+}

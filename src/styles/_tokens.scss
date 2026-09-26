@@ -1,0 +1,123 @@
+@use "variables" as *;
+
+:root {
+  --color-green-1: #8ff0a4;  // button
+  --color-green-2: #abffb9;  // bg light 
+  --color-green-3: #9eecab;  // bg dark
+  --color-green-4: #dff3e4;  // bg lighter, desaturated
+
+  --color-bg: #ffffff;
+  --color-surface: #f6f5f4;
+  --color-text-primary: #0d0d0d;
+  --color-text-secondary: rgba(13, 13, 13, 0.5);
+  --color-accent: var(--color-green-1);
+  --color-accent-hover: var(--color-green-2);
+  --color-accent-active: #b2ffc1;
+  --color-accent-text: #000000;
+  --color-border: #deddda;
+  --section-bg: var(--color-bg);
+  --section-accent-bg: #dff3e4;
+  --section-accent-text: #1c3224;
+  --link-color: #000000;
+  --color-code-bg: rgba(60, 50, 30, 0.05);
+
+  --button-bg: #f6f5f4;
+  --button-bg-hover: #eae9e8;
+  --button-bg-active: #d9d8d7;
+  --button-fg: #0d0d0d;
+
+  --dropdown-bg: var(--color-bg);
+  --dropdown-fg: var(--color-text-primary);
+  --dropdown-box-shadow: 0 8px 32px rgb(0, 0, 0, 0.1), 0 2px 8px rgb(0, 0, 0, 0.2);
+
+  --tooltip-bg: var(--color-text-primary);
+  --tooltip-fg: var(--color-bg);
+  --tooltip-box-shadow: 0 8px 32px rgb(0, 0, 0, 0.1), 0 2px 8px rgb(0, 0, 0, 0.2);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  // deprecated
+  --font-sans: "Inter", "Cantarell", "Noto Sans", "Liberation Sans", system-ui, sans-serif;
+  --font-display: "Asap", "Inter", "Cantarell", system-ui, sans-serif;
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+
+  --font-family: "Inter", "Cantarell", "Noto Sans", "Liberation Sans", system-ui, sans-serif;
+  --heading-font-family: "Asap", "Inter", "Cantarell", system-ui, sans-serif;
+
+  --section-spacing: 48px;  /* section padding */
+  --heading-spacing: 32px;  /* heading top-margin */
+  --block-spacing: 16px;  /* space between paragraphs */
+  --inset: 40px;  /* list item indentation */
+
+  --fs-display: 3rem;
+  --fs-h2: 1.875rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.85rem;
+
+  --radius-md: 9px;
+  --radius-lg: 16px;
+  --radius-sm: 10px;
+  --radius: 15px;
+
+  --measure: 70ch;
+  --content-width: 1120px;
+  --content-narrow: 720px;
+
+  // deprecated
+  --shadow-card: 0 8px 32px rgb(0, 0, 0, 0.1), 0 2px 8px rgb(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #242424;
+    --color-surface: #303030;
+    --color-text-primary: #eeeeec;
+    --color-text-secondary: #808080;
+    --color-accent: var(--color-green-1);
+    --color-accent-hover: var(--color-green-2);
+    --color-accent-active: var(--color-green-3);
+    --color-accent-text: #000000;
+    --color-border: #3d3d3d;
+    --color-code-bg: rgba(255, 255, 255, 0.07);
+    --section-bg: var(--color-bg);
+
+    --section-accent-text: var(--color-text-primary);
+    --section-accent-bg: var(--color-bg);
+
+    --link-color: #ffffff;
+    --button-bg-hover: #3A3A3A;
+    --dropdown-bg: #3d3d3d;
+
+    --tooltip-bg: var(--color-accent);
+    --tooltip-fg: var(--color-accent-text); 
+
+    --button-bg: rgba(255, 255, 255, 0.07);
+    --button-bg-hover: rgba(255, 255, 255, 0.14);
+    --button-bg-active: rgba(255, 255, 255, 0.18);
+    --button-fg: #ffffff;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  :root {
+    --fs-display: 4rem;
+    --fs-h2: 2.125rem;
+    --section-spacing: 48px;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  :root {
+    --fs-display: 5.25rem;
+    --fs-h2: 2.25rem;
+  }
+}
