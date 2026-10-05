@@ -8,6 +8,7 @@
   display: grid;
   place-items: center;
   min-height: min(92vh, 820px);
+  min-height: min(92svh, 820px);
   overflow: clip;
   background-size: cover;
   background-position: center;
@@ -77,6 +78,7 @@
   }
   to {
     transform: translateY(round(-7vh, 1px));
+    transform: translateY(round(-7svh, 1px));
   }
 }
 
