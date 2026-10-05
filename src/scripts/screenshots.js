@@ -234,6 +234,7 @@ export function initializeScreenshots(root = document) {
   let restoreFocus = null;
   let animating = false;
   let lightboxContentGeneration = 0;
+  let swipePointerId = null;
 
   function inactiveLightboxLayer() {
     return 1 - activeLightboxLayer;
@@ -714,6 +715,7 @@ export function initializeScreenshots(root = document) {
       return;
 
     animating = true;
+    swipePointerId = null;
     const figure = figures[activeIndex];
     const focusTarget = restoreFocus;
 
@@ -737,7 +739,7 @@ export function initializeScreenshots(root = document) {
   }
 
   async function goToSlide(index) {
-    if (index < 0 || index >= figures.length || index === activeIndex || animating)
+    if (!dialog.open || index < 0 || index >= figures.length || index === activeIndex || animating)
       return;
 
     animating = true;
@@ -766,7 +768,6 @@ export function initializeScreenshots(root = document) {
   prevBtn?.addEventListener("click", () => goToSlide(activeIndex - 1));
   nextBtn?.addEventListener("click", () => goToSlide(activeIndex + 1));
 
-  let swipePointerId = null;
   let swipeStartX = 0;
   let swipeStartY = 0;
 
@@ -795,6 +796,9 @@ export function initializeScreenshots(root = document) {
     } catch {
       // Already released.
     }
+
+    if (!dialog.open)
+      return;
 
     if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy))
       return;
