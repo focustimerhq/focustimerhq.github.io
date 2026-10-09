@@ -49,8 +49,8 @@
   {
     "id": "overlay",
     "src": "1.1/screen-overlay@2.webp",
-    "width": 2400,
-    "height": 1350,
+    "width": 2560,
+    "height": 1440,
     "scale": 2,
     "caption": "Break overlay",
     "alt": "Full-screen break overlay reminding you to take a break",
