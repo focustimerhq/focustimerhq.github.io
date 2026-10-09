@@ -15,7 +15,8 @@
       <meta property="og:title" content="{{ site.title }}">
       <meta property="og:image" content="{{ site.image }}">
     {% endif %}
-    <link rel="icon" href="{{ site.icon }}" type="image/svg+xml">
+    <link rel="icon" href="{{ site.icon_light }}" media="(prefers-color-scheme: light)" type="image/svg+xml">
+    <link rel="icon" href="{{ site.icon_dark }}" media="(prefers-color-scheme: dark)" type="image/svg+xml">
     <link rel="preload" href="/assets/fonts/asap-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/styles/main.css">

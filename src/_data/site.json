@@ -3,8 +3,9 @@
   "title": "Focus Timer",
   "description": "Work better with regular breaks",
   "keywords": "gnome, gnome-shell, pomodoro, pomodoro timer, break timer, extension, linux",
-  "icon": "/assets/icons/io.github.focustimerhq.FocusTimer-symbolic.svg",
-  "image": "/assets/icons/io.github.focustimerhq.FocusTimer.svg",
+  "icon_light": "/assets/icons/icon-symbolic.svg",
+  "icon_dark": "/assets/icons/icon-symbolic-dark.svg",
+  "image": "/assets/icons/icon.png",
   "links": {
     "flathub": "https://flathub.org/apps/io.github.focustimerhq.FocusTimer",
     "github": "https://github.com/focustimerhq/FocusTimer",
