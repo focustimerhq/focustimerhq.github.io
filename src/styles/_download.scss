@@ -67,14 +67,14 @@
 
   p {
     margin-bottom: 12px;
-
-    &:not(.muted) a {
-      font-weight: 500;
-    }
   }
 
   ol {
     padding-inline-start: 20px;
+  }
+
+  p:not(.muted) > a {
+    text-decoration: underline;
   }
 }
 

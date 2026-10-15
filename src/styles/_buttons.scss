@@ -13,17 +13,19 @@ button,
   line-height: 1;
   text-decoration: none !important;
   cursor: pointer;
-  color: var(--button-fg); // var(--color-text-primary);
+  color: var(--button-fg);
   background: var(--button-bg);
   transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
   user-select: none;
 
   &:hover {
     background: var(--button-bg-hover);
+    color: var(--button-fg);
   }
 
   &:active {
     background: var(--button-bg-active);
+    color: var(--button-fg);
   }
 
   &.large {

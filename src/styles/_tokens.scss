@@ -9,7 +9,7 @@
   --color-bg: #ffffff;
   --color-surface: #f6f5f4;
   --color-text-primary: #0d0d0d;
-  --color-text-secondary: rgba(13, 13, 13, 0.5);
+  --color-text-secondary: rgba(13, 13, 13, 0.6);
   --color-accent: var(--color-green-1);
   --color-accent-hover: var(--color-green-2);
   --color-accent-active: #b2ffc1;
@@ -18,8 +18,10 @@
   --section-bg: var(--color-bg);
   --section-accent-bg: #dff3e4;
   --section-accent-text: #1c3224;
-  --link-color: #000000;
   --color-code-bg: rgba(60, 50, 30, 0.05);
+
+  --link-color: #1C6C26;
+  --link-color-hover: #399642;
 
   --button-bg: #f6f5f4;
   --button-bg-hover: #eae9e8;
@@ -81,7 +83,7 @@
     --color-bg: #242424;
     --color-surface: #303030;
     --color-text-primary: #eeeeec;
-    --color-text-secondary: #808080;
+    --color-text-secondary: #8E8E8E;
     --color-accent: var(--color-green-1);
     --color-accent-hover: var(--color-green-2);
     --color-accent-active: var(--color-green-3);
@@ -94,6 +96,8 @@
     --section-accent-bg: var(--color-bg);
 
     --link-color: #ffffff;
+    --link-color-hover: var(--color-green-3);
+
     --button-bg-hover: #3A3A3A;
     --dropdown-bg: #3d3d3d;
 

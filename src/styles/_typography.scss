@@ -58,20 +58,21 @@ strong {
   font-weight: 600;
 }
 
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
+a:not([role="button"]) {
+  & {
+    color: var(--link-color);
+    text-decoration: none;
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+  &:hover {
+    color: var(--link-color-hover);
+    text-decoration: underline;
+  }
 
-a:hover,
-a:focus {
-  color: var(--link-color);
+  &:focus {
+    color: var(--link-color);
+  }
 }
-
 
 .small {
   font-size: var(--fs-small);
@@ -82,11 +83,9 @@ a:focus {
 }
 
 .muted {
-  color: var(--color-text-secondary);
+  --link-color: var(--color-text-secondary);
 
-  a {
-    color: color-mix(in srgb, currentColor 70%, var(--link-color));
-  }
+  color: var(--color-text-secondary);
 }
 
 
@@ -130,5 +129,3 @@ a:focus {
     color: currentColor;
   }
 }
-
-
